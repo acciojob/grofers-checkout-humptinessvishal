@@ -6,19 +6,15 @@ const td = document.querySelectorAll('.price')
 
 const getSum = () => {
 //Add your code here
-	var totalPrice = 0;
-    td.forEach(function(td) {
-		totalPrice += parseFloat(td.textContent);
+	let totalPrice = 0;
+	td.forEach(priceElement => {
+    const price = parseInt(priceElement.textContent);
+		totalPrice += price;
 	});
-	const table = document.getElementsByTagName("table")[0];
-    const tr = document.createElement("tr");
-    const th = document.createElement("th");
-    th.innerText = totalPrice.toFixed(2);
-    tr.append(th);
-    table.appendChild(tr);
-	return totalPrice.toFixed(2);
+	const totalElement = document.createElement('div');
+    totalElement.innerHTML = `Total Price: ${totalPrice} Rs`;
+    document.body.appendChild(totalElement);
 };
 
 getSumBtn.addEventListener("click", getSum);
-
 
